@@ -7,3 +7,6 @@ class Course(BaseModel):
 class Discussion(BaseModel):
     id: int
     title: str
+
+class DiscussionEntryRequest(BaseModel):
+    message: str
