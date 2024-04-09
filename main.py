@@ -3,9 +3,9 @@ import os
 from fastapi import FastAPI
 from dotenv import load_dotenv
 import requests
-import json
 
 from models import Course, Discussion, DiscussionEntryRequest
+
 
 load_dotenv()
 app = FastAPI()
@@ -18,6 +18,7 @@ headers: dict[str, str] = {
     "Authorization": f"Bearer {access_token}"
 }
 
+
 @app.get("/courses")
 async def get_courses() -> list[Course]:
     response = requests.get(url=f"{base_url}/courses", headers=headers)
@@ -29,6 +30,7 @@ async def get_courses() -> list[Course]:
         courses.append(course)
 
     return courses
+
 
 @app.get("/discussions")
 async def get_discussions(course_id: int) -> list[Discussion]:
